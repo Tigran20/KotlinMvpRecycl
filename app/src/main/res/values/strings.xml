@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Alex Troy</string>
+    <string name="android_development">Android Development</string>
+    <string name="student">Student</string>
+    <string name="man">Man</string>
+    <string name="enter_a_message">Enter a message...</string>
+    <string name="send_message">send message</string>
+</resources>
