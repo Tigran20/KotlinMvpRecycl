@@ -5,7 +5,7 @@ import com.alextroy.aam3_alextroy.model.NewsItem
 
 class Presenter(view2: Contract.ActivityView) : Contract.Presenter {
     private val view: Contract.ActivityView? = view2
-    private var data: Contract.Data? = DataUtils().data
+    private var data: Contract.Data? = DataUtils().getInstance()
 
     override fun getDataModel(): List<NewsItem> {
         return data!!.getDataList()

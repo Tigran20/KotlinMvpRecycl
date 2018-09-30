@@ -2,12 +2,12 @@ package com.alextroy.aam3_alextroy.model
 
 import com.alextroy.aam3_alextroy.presenter.Contract
 import java.util.*
+import kotlin.collections.ArrayList
 
 
-class DataUtils : Contract.Data{
+class DataUtils : Contract.Data {
 
-    private val news = ArrayList<NewsItem>()
-    var data : DataUtils? = DataUtils()
+    private var news = ArrayList<NewsItem>()
 
     override fun getDataList(): List<NewsItem> {
         return news
@@ -17,7 +17,21 @@ class DataUtils : Contract.Data{
         return news[position]
     }
 
+    init {
+        generateNews()
+    }
+
+    fun getInstance(): DataUtils {
+        var data: DataUtils? = null
+        if (data == null) {
+            data = DataUtils()
+        }
+        return data
+    }
+
     fun generateNews(): List<NewsItem> {
+        news = ArrayList()
+
         val darwinAwards = Category(1, "Darwin Awards")
         val criminal = Category(2, "Criminal")
         val animals = Category(3, "Animals")
