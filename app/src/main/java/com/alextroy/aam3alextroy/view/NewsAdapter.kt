@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.news_list_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(var items: List<NewsItem>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(var items: List<NewsItem>, private val context: Context, val select: ViewActivitySelection.Selection) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false))
@@ -32,7 +32,8 @@ class NewsAdapter(var items: List<NewsItem>, private val context: Context) : Rec
         Glide.with(context).load(news.imageUrl).into(holder.newsImage)
 
         holder.cardView.setOnClickListener {
-            context.startActivity(AboutActivity.newIntent(context))
+//            context.startActivity(AboutActivity.newIntent(context))
+            select.ChoiceId(position)
         }
     }
 

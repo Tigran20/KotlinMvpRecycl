@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alextroy.aam3alextroy.R
-import com.alextroy.aam3alextroy.model.NewsItem
 
 class AboutActivity : AppCompatActivity() {
 

@@ -1,7 +1,7 @@
 package com.alextroy.aam3alextroy.presenter
 
-import com.alextroy.aam3alextroy.model.NewsItem
 import com.alextroy.aam3alextroy.model.DataUtils
+import com.alextroy.aam3alextroy.model.NewsItem
 
 class Presenter(view2: Contract.ActivityView) : Contract.Presenter {
     private val view: Contract.ActivityView = view2
@@ -11,8 +11,8 @@ class Presenter(view2: Contract.ActivityView) : Contract.Presenter {
         return data.getDataList()
     }
 
-//    override fun selectedItem(selectId: Int) {
-//        val f: String = data.getModelItem(selectId).title
-//        view.showItem(f)
-//    }
+    override fun selectedItem(selectId: Int) {
+        val model = data.getModelItem(selectId).category.name
+        view.showItem(model)
+    }
 }
