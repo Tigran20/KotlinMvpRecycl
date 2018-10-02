@@ -11,8 +11,8 @@ class Presenter(view2: Contract.ActivityView) : Contract.Presenter {
         return data.getDataList()
     }
 
-    override fun selectedItem(selectId: Int) {
-        val f: String = data.getModelItem(selectId).title
-        view.showItem(f)
-    }
+//    override fun selectedItem(selectId: Int) {
+//        val f: String = data.getModelItem(selectId).title
+//        view.showItem(f)
+//    }
 }

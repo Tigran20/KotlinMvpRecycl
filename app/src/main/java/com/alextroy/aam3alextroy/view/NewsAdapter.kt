@@ -14,10 +14,7 @@ import java.util.*
 
 class NewsAdapter(var items: List<NewsItem>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-    lateinit var listener: OnItemClickListener
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        setOnItemClickListener(listener)
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false))
     }
 
@@ -26,15 +23,16 @@ class NewsAdapter(var items: List<NewsItem>, private val context: Context) : Rec
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.newsCategory.text = items[position].category.name
-        holder.newsTitle.text = items[position].title
-        holder.newsPreview.text = items[position].previewText
-        holder.newsDate.text = dateAgo(items[position].publishDate)
+        val news = items[position]
+        holder.newsCategory.text = news.category.name
+        holder.newsTitle.text = news.title
+        holder.newsPreview.text = news.previewText
+        holder.newsDate.text = dateAgo(news.publishDate)
 
-        Glide.with(context).load(items[position].imageUrl).into(holder.newsImage)
+        Glide.with(context).load(news.imageUrl).into(holder.newsImage)
 
         holder.cardView.setOnClickListener {
-            listener.onClick(it, data = items[position])
+            context.startActivity(AboutActivity.newIntent(context))
         }
     }
 
@@ -50,14 +48,6 @@ class NewsAdapter(var items: List<NewsItem>, private val context: Context) : Rec
 
     fun addAll(list: List<NewsItem>) {
         items = list
-    }
-
-    interface OnItemClickListener {
-        fun onClick(view: View, data: NewsItem)
-    }
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.listener = listener
     }
 
     private fun dateAgo(date: Date): String {

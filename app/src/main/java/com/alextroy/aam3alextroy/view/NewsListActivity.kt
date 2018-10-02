@@ -25,16 +25,15 @@ class NewsListActivity : AppCompatActivity(), Contract.ActivityView {
         init(news)
     }
 
-    private fun showToast(model: String) {
-        Toast.makeText(this, model, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showItem(string: String) {
-        showToast(string)
-    }
+//    private fun showToast(model: String) {
+//        Toast.makeText(this, model, Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun showItem(string: String) {
+//        showToast(string)
+//    }
 
     private fun init(news: List<NewsItem>) {
-
         val presenter: Contract.Presenter? = Presenter(this)
 
         val rv = findViewById<RecyclerView>(R.id.recycler_view)
@@ -46,12 +45,5 @@ class NewsListActivity : AppCompatActivity(), Contract.ActivityView {
         rv.adapter = adapter
 
         adapter.addAll(presenter!!.getDataModel())
-
-        adapter.setOnItemClickListener(object : NewsAdapter.OnItemClickListener {
-            override fun onClick(view: View, data: NewsItem) {
-                val intent = AboutActivity.newIntent(this@NewsListActivity)
-                startActivity(intent)
-            }
-        })
     }
 }
