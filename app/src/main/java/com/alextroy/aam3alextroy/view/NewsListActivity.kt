@@ -1,6 +1,7 @@
 package com.alextroy.aam3alextroy.view
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alextroy.aam3alextroy.R
 import com.alextroy.aam3alextroy.model.DataUtils
-import com.alextroy.aam3alextroy.model.Data.NewsItem
+import com.alextroy.aam3alextroy.model.NewsItem
 import com.alextroy.aam3alextroy.presenter.Contract
 import com.alextroy.aam3alextroy.presenter.Presenter
 
@@ -46,11 +47,11 @@ class NewsListActivity : AppCompatActivity(), Contract.ActivityView {
 
         adapter.addAll(presenter!!.getDataModel())
 
-//        adapter.setOnItemClickListener(object : NewsAdapter.OnItemClickListener {
-//            override fun onClick(view: View, data: NewsItem) {
-//                val intent = AboutActivity.newIntent(this@NewsListActivity)
-//                startActivity(intent)
-//            }
-//        })
+        adapter.setOnItemClickListener(object : NewsAdapter.OnItemClickListener {
+            override fun onClick(view: View, data: NewsItem) {
+                val intent = AboutActivity.newIntent(this@NewsListActivity)
+                startActivity(intent)
+            }
+        })
     }
 }

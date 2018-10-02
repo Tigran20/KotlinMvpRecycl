@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alextroy.aam3alextroy.R
-import com.alextroy.aam3alextroy.model.Data.NewsItem
+import com.alextroy.aam3alextroy.model.NewsItem
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.news_list_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(var items: List<NewsItem>, val context: Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(var items: List<NewsItem>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-//    lateinit var listener: OnItemClickListener
+    lateinit var listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        setOnItemClickListener(listener)
+        setOnItemClickListener(listener)
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false))
     }
 
@@ -33,9 +33,9 @@ class NewsAdapter(var items: List<NewsItem>, val context: Context) : RecyclerVie
 
         Glide.with(context).load(items[position].imageUrl).into(holder.newsImage)
 
-//        holder.cardView.setOnClickListener {
-//            listener.onClick(it, data = items[position])
-//        }
+        holder.cardView.setOnClickListener {
+            listener.onClick(it, data = items[position])
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -52,13 +52,13 @@ class NewsAdapter(var items: List<NewsItem>, val context: Context) : RecyclerVie
         items = list
     }
 
-//    interface OnItemClickListener {
-//        fun onClick(view: View, data: NewsItem)
-//    }
-//
-//    fun setOnItemClickListener(listener: OnItemClickListener) {
-//        this.listener = listener
-//    }
+    interface OnItemClickListener {
+        fun onClick(view: View, data: NewsItem)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 
     private fun dateAgo(date: Date): String {
         val time = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)

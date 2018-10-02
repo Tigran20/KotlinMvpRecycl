@@ -1,7 +1,5 @@
 package com.alextroy.aam3alextroy.model
 
-import com.alextroy.aam3alextroy.model.Data.Category
-import com.alextroy.aam3alextroy.model.Data.NewsItem
 import com.alextroy.aam3alextroy.presenter.Contract
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,7 +21,7 @@ object DataUtils : Contract.Data {
         generateNews()
     }
 
-    fun generateNews(): List<Data.NewsItem> {
+    fun generateNews(): List<NewsItem> {
         news = ArrayList()
 
         val darwinAwards = Category(1, "Darwin Awards")

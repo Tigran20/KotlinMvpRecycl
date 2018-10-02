@@ -1,6 +1,6 @@
 package com.alextroy.aam3alextroy.presenter
 
-import com.alextroy.aam3alextroy.model.Data.NewsItem
+import com.alextroy.aam3alextroy.model.NewsItem
 
 interface Contract {
     interface Data {
