@@ -37,4 +37,6 @@ dependencies {
     annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.5'
     kapt 'com.github.bumptech.glide:compiler:4.2.0'
     kapt 'com.arello-mobile:moxy-compiler:1.5.5'
+
+
 }
