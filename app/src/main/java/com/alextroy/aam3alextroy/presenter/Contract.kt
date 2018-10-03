@@ -10,11 +10,6 @@ interface Contract {
 
     interface Presenter {
         fun getDataModel(): List<NewsItem>
-        fun selectedItem(selectId: Int)
-    }
-
-    interface ActivityView {
-        fun showItem(string: String)
     }
 
 }

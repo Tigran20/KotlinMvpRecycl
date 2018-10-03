@@ -1,4 +1,4 @@
-package com.alextroy.aam3alextroy.view
+package com.alextroy.aam3alextroy.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alextroy.aam3alextroy.R
 import com.alextroy.aam3alextroy.model.NewsItem
+import com.alextroy.aam3alextroy.view.activities.NewsDetailsActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.news_list_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsAdapter(var items: List<NewsItem>, private val context: Context, val select: ViewActivitySelection.Selection) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(var items: List<NewsItem>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false))
@@ -32,17 +33,16 @@ class NewsAdapter(var items: List<NewsItem>, private val context: Context, val s
         Glide.with(context).load(news.imageUrl).into(holder.newsImage)
 
         holder.cardView.setOnClickListener {
-//            context.startActivity(AboutActivity.newIntent(context))
-            select.ChoiceId(position)
+            context.startActivity(NewsDetailsActivity.newIntent(context))
         }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val newsCategory = view.news_category!!
-        val newsTitle = view.news_title!!
+        val newsTitle = view.news_title_detail!!
         val newsPreview = view.news_preview_text!!
-        val newsDate = view.news_published_date!!
-        val newsImage = view.news_image!!
+        val newsDate = view.news_published_date_detail!!
+        val newsImage = view.news_image_detail!!
         val cardView = view.card_view!!
 
     }

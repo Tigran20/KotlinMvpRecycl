@@ -1,8 +1,6 @@
-package com.alextroy.aam3alextroy.view
+package com.alextroy.aam3alextroy.view.activities
 
-import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,16 +10,12 @@ import com.alextroy.aam3alextroy.model.DataUtils
 import com.alextroy.aam3alextroy.model.NewsItem
 import com.alextroy.aam3alextroy.presenter.Contract
 import com.alextroy.aam3alextroy.presenter.Presenter
+import com.alextroy.aam3alextroy.view.adapter.NewsAdapter
 
 
-class NewsListActivity : AppCompatActivity(), Contract.ActivityView, ViewActivitySelection.Selection {
+class NewsListActivity : AppCompatActivity() {
 
     private lateinit var presenter: Contract.Presenter
-    private lateinit var context: Context
-
-    override fun ChoiceId(id: Int) {
-        presenter.selectedItem(id)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +26,11 @@ class NewsListActivity : AppCompatActivity(), Contract.ActivityView, ViewActivit
         init(news)
     }
 
-    private fun showToast(model: String) {
-        Toast.makeText(this, model, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showItem(string: String) {
-        showToast(string)
-    }
-
     private fun init(news: List<NewsItem>) {
-        presenter = Presenter(this)
+        presenter = Presenter()
 
         val rv = findViewById<RecyclerView>(R.id.recycler_view)
-        val adapter = NewsAdapter(news, this, this)
+        val adapter = NewsAdapter(news, this)
         val dec = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
 
         rv.addItemDecoration(dec)

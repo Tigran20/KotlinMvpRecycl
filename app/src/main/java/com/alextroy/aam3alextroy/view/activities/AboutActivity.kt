@@ -1,4 +1,4 @@
-package com.alextroy.aam3alextroy.view
+package com.alextroy.aam3alextroy.view.activities
 
 import android.content.Context
 import android.content.Intent
